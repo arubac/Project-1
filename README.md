@@ -1,5 +1,6 @@
 # Project-1
 Aruba Chaudhary Z23563188
+
 # Sports Schedule Board
 
 The Sports Schedule Board is a React application that allows users to view and search through a schedule of sports matches. Users can filter the matches by typing a team name into the search bar.
