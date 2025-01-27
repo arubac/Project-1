@@ -1,0 +1,134 @@
+import React, { useState } from "react";
+import "./styles.css";
+
+const matches = [
+  {
+    id: 1,
+    team1: "New York Knicks",
+    team2: "Chicago Bulls",
+    date: "2025-02-01",
+    time: "3:00 PM",
+    venue: "City Stadium",
+    link: "https://example.com/knicks-vs-bulls",
+  },
+  {
+    id: 2,
+    team1: "Golden State Warriors",
+    team2: "Houston Rockets",
+    date: "2025-02-02",
+    time: "5:00 PM",
+    venue: "Downtown Arena",
+    link: "https://example.com/warriors-vs-rockets",
+  },
+  {
+    id: 3,
+    team1: "Indiana Pacers",
+    team2: "Cleveland Cavaliers",
+    date: "2025-02-03",
+    time: "7:00 PM",
+    venue: "National Park",
+    link: "https://example.com/pacers-vs-cavaliers",
+  },
+  {
+    id: 4,
+    team1: "Boston Celtics",
+    team2: "Memphis Grizzlies",
+    date: "2025-02-04",
+    time: "6:00 PM",
+    venue: "Ocean Arena",
+    link: "https://example.com/celtics-vs-grizzlies",
+  },
+  {
+    id: 5,
+    team1: "LA Clippers",
+    team2: "Phoenix Suns",
+    date: "2025-02-05",
+    time: "8:00 PM",
+    venue: "Jungle Stadium",
+    link: "https://example.com/clippers-vs-suns",
+  },
+  {
+    id: 6,
+    team1: "Los Angeles Lakers",
+    team2: "Chicago Bulls",
+    date: "2025-02-06",
+    time: "4:00 PM",
+    venue: "Sky Dome",
+    link: "https://example.com/lakers-vs-bulls",
+  },
+  {
+    id: 7,
+    team1: "Houston Rockets",
+    team2: "Boston Celtics",
+    date: "2025-02-07",
+    time: "5:30 PM",
+    venue: "Bird Nest Arena",
+    link: "https://example.com/rockets-vs-celtics",
+  },
+  {
+    id: 8,
+    team1: "Golden State Warriors",
+    team2: "Memphis Grizzlies",
+    date: "2025-02-08",
+    time: "3:30 PM",
+    venue: "Ranch Field",
+    link: "https://example.com/warriors-vs-grizzlies",
+  },
+  {
+    id: 9,
+    team1: "New York Knicks",
+    team2: "Phoenix Suns",
+    date: "2025-02-09",
+    time: "6:00 PM",
+    venue: "Forest Arena",
+    link: "https://example.com/knicks-vs-suns",
+  },
+  {
+    id: 10,
+    team1: "LA Clippers",
+    team2: "Los Angeles Lakers",
+    date: "2025-02-10",
+    time: "7:30 PM",
+    venue: "City Stadium",
+    link: "https://example.com/clippers-vs-lakers",
+  },
+];
+
+export default function SportsScheduleBoard() {
+  const [filter, setFilter] = useState("");
+
+  const filteredMatches = matches.filter((match) =>
+    `${match.team1} vs ${match.team2}`.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>Sports Schedule Board</h1>
+        <p>Stay updated with the latest games</p>
+        <input
+          type="text"
+          placeholder="Search by team"
+          className="search-bar"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </header>
+
+      <div className="card-grid">
+        {filteredMatches.map((match) => (
+          <div key={match.id} className="card">
+            <h2>
+              {match.team1} vs {match.team2}
+            </h2>
+            <p>{match.date} | {match.time}</p>
+            <p>Venue: {match.venue}</p>
+            <a href={match.link} target="_blank" rel="noopener noreferrer" className="details-button">
+              View Details
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
